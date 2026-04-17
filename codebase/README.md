@@ -138,6 +138,6 @@ configs/
 
 We use the [NYU Depth v2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html) dataset stored as WebDataset tar shards with H5-packed samples. Set the data path via the `NYU_WDS_ROOT` environment variable or in the config YAML.
 
-## Acknowledgements
+<!-- ## Acknowledgements
 
-This work builds on ideas from [Kim et al. (2024)](https://arxiv.org/abs/2402.03251), [CLIPSeg (Luddecke & Ecker, 2022)](https://arxiv.org/abs/2112.10003), and [CLIP (Radford et al., 2021)](https://arxiv.org/abs/2103.00020).
+This work builds on ideas from [Kim et al. (2024)](https://arxiv.org/abs/2402.03251), [CLIPSeg (Luddecke & Ecker, 2022)](https://arxiv.org/abs/2112.10003), and [CLIP (Radford et al., 2021)](https://arxiv.org/abs/2103.00020). -->
