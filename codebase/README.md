@@ -30,29 +30,29 @@ Trained and evaluated on NYU Depth v2:
 Input Image (352x352)
     │
     ▼
-┌─────────────────────┐     ┌──────────────────────┐
-│ Frozen CLIP Image    │     │ Depth Embedding       │
+┌─────────────────────┐     ┌───────────────────────┐
+│ Frozen CLIP Image   │     │ Depth Embedding       │
 │ Encoder (ViT-B/16)  │     │ N learnable tokens    │
 │                     │     │ + BOS/EOS framing     │
-│ Extract layers      │     │         │              │
-│ 3, 6, 9            │     │         ▼              │
-└────────┬────────────┘     │ Frozen CLIP Text       │
-         │                  │ Encoder (causal mask)  │
-         │                  │         │              │
-         │                  │    EOS-pooling +       │
-         │                  │    text projection     │
-         │                  └─────────┬──────────────┘
+│ Extract layers      │     │         │             │
+│ 3, 6, 9             │     │         ▼             │
+└────────┬────────────┘     │ Frozen CLIP Text      │
+         │                  │ Encoder (causal mask) │
+         │                  │         │             │
+         │                  │ EOS-pooling           │
+         │                  │ + text projection     │
+         │                  └─────────┬─────────────┘
          │                            │
          │              q ∈ R^512     │
          │                            │
          ▼                            ▼
 ┌─────────────────────────────────────────────┐
-│ Dense Predictor                              │
+│ Dense Predictor                             │
 │  • Projection: 768 → 64 (per layer)         │
-│  • FiLM: q → γ, β to modulate features     │
+│  • FiLM: q → γ, β to modulate features      │
 │  • 3 Transformer blocks (w=64, h=4)         │
-│  • Deconv: 22×22 → 88×88 → 352×352         │
-│  • Softplus output                           │
+│  • Deconv: 22×22 → 88×88 → 352×352          │
+│  • Softplus output                          │
 └──────────────────┬──────────────────────────┘
                    │
                    ▼

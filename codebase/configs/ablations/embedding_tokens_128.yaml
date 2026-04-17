@@ -15,7 +15,7 @@ clip:
   precision: fp32
   return_patch_tokens: true
   normalize: true
-mirror:
+depth_embedding:
   num_tokens: 128
   pooling: eos
   normalize: false

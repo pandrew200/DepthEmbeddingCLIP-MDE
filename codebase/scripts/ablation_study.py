@@ -28,28 +28,28 @@ with open(os.path.join(ROOT, "configs", "model_base.yaml")) as f:
 
 ABLATIONS = [
     {
-        "name": "mirror_tokens_16",
-        "desc": "Mirror tokens: 16 (vs baseline 64)",
-        "changes": {"mirror.num_tokens": 16},
+        "name": "embedding_tokens_16",
+        "desc": "Embedding tokens: 16 (vs baseline 64)",
+        "changes": {"depth_embedding.num_tokens": 16},
     },
     {
-        "name": "mirror_tokens_128",
-        "desc": "Mirror tokens: 128 (vs baseline 64)",
-        "changes": {"mirror.num_tokens": 128},
+        "name": "embedding_tokens_128",
+        "desc": "Embedding tokens: 128 (vs baseline 64)",
+        "changes": {"depth_embedding.num_tokens": 128},
     },
     {
         "name": "pooling_mean",
         "desc": "Pooling: mean (vs baseline eos)",
-        "changes": {"mirror.pooling": "mean"},
+        "changes": {"depth_embedding.pooling": "mean"},
     },
     {
         "name": "random_fixed_q",
-        "desc": "Random fixed q (mirror frozen, FiLM active)",
+        "desc": "Random fixed q (embedding frozen, FiLM active)",
         "changes": {"depth_embedding.freeze_embedding": True},
     },
     {
-        "name": "no_mirror_no_film",
-        "desc": "No mirror/FiLM (decoder on raw features)",
+        "name": "no_embedding_no_film",
+        "desc": "No embedding/FiLM (decoder on raw features)",
         "changes": {"depth_embedding.use_embedding": False, "dense_predictor.use_film": False},
     },
     {
