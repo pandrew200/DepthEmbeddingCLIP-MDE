@@ -19,7 +19,7 @@ Trained and evaluated on NYU Depth v2:
 | Metric | Value |
 |--------|-------|
 | Abs Rel | 0.249 |
-| RMSE | 0.984 |
+| RMSE | 0.784 |
 | δ₁ (< 1.25) | 0.547 |
 | δ₂ (< 1.25²) | 0.844 |
 | δ₃ (< 1.25³) | 0.952 |
@@ -136,7 +136,26 @@ configs/
 
 ## Dataset
 
-We use the [NYU Depth v2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html) dataset stored as WebDataset tar shards with H5-packed samples. Set the data path via the `NYU_WDS_ROOT` environment variable or in the config YAML.
+We use the [NYU Depth v2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html) dataset ([`sayakpaul/nyu_depth_v2`](https://huggingface.co/datasets/sayakpaul/nyu_depth_v2) on HuggingFace), stored as WebDataset tar shards with H5-packed samples.
+
+Download the dataset:
+```bash
+pip install huggingface_hub
+python -c "
+from huggingface_hub import snapshot_download
+snapshot_download(
+    repo_id='sayakpaul/nyu_depth_v2',
+    repo_type='dataset',
+    local_dir='nyu_depth_v2',
+    local_dir_use_symlinks=False,
+)
+"
+```
+
+Then set the data path:
+```bash
+export NYU_WDS_ROOT=/path/to/nyu_depth_v2/data
+```
 
 <!-- ## Acknowledgements
 
