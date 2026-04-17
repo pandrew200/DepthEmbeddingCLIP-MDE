@@ -1,0 +1,53 @@
+model:
+  image_size: 352
+  layers:
+  - 9
+clip:
+  model_name: ViT-B-16
+  pretrained: openai
+  layers:
+  - 3
+  - 6
+  - 9
+  device: cpu
+  precision: fp32
+  return_patch_tokens: true
+  normalize: true
+mirror:
+  num_tokens: 64
+  pooling: eos
+  normalize: false
+dense_predictor:
+  layers:
+  - 9
+  clip_feat_dim: 768
+  q_dim: 512
+  d_model: 64
+  n_heads: 4
+  n_blocks: 3
+  mlp_hidden: 2048
+  deconv_mid_ch: 32
+  out_activation: softplus
+  refine_kernel: 3
+  refine_stride: 1
+  refine_padding: 1
+train:
+  seed: 42
+  lr: 0.003
+  weight_decay: 0.01
+  epochs: 25
+  scheduler: cosine
+  eval_every: 1
+  best_key: abs_rel
+  best_mode: min
+  grad_clip_norm: 1.0
+data:
+  batch_size: 8
+  num_workers: 4
+loss:
+  name: si_loss
+  alpha: 10.0
+  lam: 0.85
+  eps: 1e-6
+  min_depth: 0.1
+  max_depth: 10.0
