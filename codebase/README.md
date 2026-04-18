@@ -19,7 +19,7 @@ Trained and evaluated on NYU Depth v2:
 | Metric | Value |
 |--------|-------|
 | Abs Rel | 0.249 |
-| RMSE | 0.784 |
+| RMSE | 0.936 |
 | δ₁ (< 1.25) | 0.547 |
 | δ₂ (< 1.25²) | 0.844 |
 | δ₃ (< 1.25³) | 0.952 |
@@ -157,6 +157,3 @@ Then set the data path:
 export NYU_WDS_ROOT=/path/to/nyu_depth_v2/data
 ```
 
-<!-- ## Acknowledgements
-
-This work builds on ideas from [Kim et al. (2024)](https://arxiv.org/abs/2402.03251), [CLIPSeg (Luddecke & Ecker, 2022)](https://arxiv.org/abs/2112.10003), and [CLIP (Radford et al., 2021)](https://arxiv.org/abs/2103.00020). -->

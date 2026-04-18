@@ -226,17 +226,6 @@ def main():
         json.dump(metrics_out, f, indent=2)
     print(f"[eval] saved metrics to {metrics_path}")
 
-    # ---- Paper comparison ----
-    # CLIP2Depth paper Table 1 (NYU Depth v2, ViT-B/16)
-    paper_targets = {
-        "abs_rel": 0.104,
-        "rmse": 0.377,
-        "delta1": 0.898,
-        "delta2": 0.981,
-        "delta3": 0.996,
-    }
-    plot_metrics_comparison(result.metrics, paper_targets, out_dir)
-
     # ---- Per-image histograms ----
     if collect_per_image and result.per_image_metrics:
         plot_metric_histograms(result.per_image_metrics, out_dir)
