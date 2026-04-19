@@ -19,7 +19,7 @@ Trained and evaluated on NYU Depth v2:
 | Metric | Value |
 |--------|-------|
 | Abs Rel | 0.249 |
-| RMSE | 0.936 |
+| RMSE | 0.964 |
 | δ₁ (< 1.25) | 0.547 |
 | δ₂ (< 1.25²) | 0.844 |
 | δ₃ (< 1.25³) | 0.952 |
