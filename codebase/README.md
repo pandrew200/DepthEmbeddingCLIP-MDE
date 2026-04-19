@@ -1,6 +1,6 @@
 # Learning a Continuous Depth Embedding from CLIP for Monocular Depth Estimation
 
-Yale CPSC 4900 Senior Thesis — Andrew Pan, advised by Alex Wong
+Yale CS Senior Thesis — Andrew Pan, advised by Alex Wong
 
 ## Overview
 
