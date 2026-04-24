@@ -126,7 +126,7 @@ scripts/
   train.py                # Main training script
   evaluate.py             # Evaluation script
   hp_search.py            # Hyperparameter search
-  ablation_search.py      # Ablation study
+  ablation_study.py       # Ablation study
 configs/
   model_base.yaml         # Base configuration
   model_pretrained.yaml   # Pretrained decoder config
