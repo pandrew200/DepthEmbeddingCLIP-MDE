@@ -90,6 +90,7 @@ class DensePredictorConfig:
     n_blocks: int = 3                  # Dense predictor transformer blocks (table: 3)
     mlp_hidden: int = 2048             # Dense predictor MLP hidden (table: 2048)
     use_film: bool = True              # Whether to apply FiLM conditioning
+    reverse_layer_order: bool = False  # If True: process L9 -> L6 -> L3 (CLIPSeg-style)
 
     # Deconv head: 22 -> 88 -> 352 when stride=4 twice
     deconv_mid_ch: int = 32            # table: 32
@@ -212,7 +213,8 @@ class DensePredictor(nn.Module):
         """
         # Project and optionally FiLM each selected layer feature map to width 64
         layer_feats_64 = []
-        for l in self.cfg.layers:
+        layer_order = list(reversed(self.cfg.layers)) if self.cfg.reverse_layer_order else self.cfg.layers
+        for l in layer_order:
             if l not in feats:
                 raise KeyError(f"Missing layer {l} in feats keys={list(feats.keys())}")
             F_l = self.proj[str(l)](feats[l])         # [B,64,Gh,Gw]

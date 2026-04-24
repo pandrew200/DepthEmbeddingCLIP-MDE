@@ -1,8 +1,8 @@
-# Ablation: Single layer [9] (vs baseline [3, 6, 9])
+# Ablation: Reverse layer order (L9 -> L6 -> L3, CLIPSeg-style)
 
 model:
   image_size: 352
-  layers: [9]
+  layers: [3, 6, 9]
 
 clip:
   model_name: "ViT-B-16"
@@ -19,7 +19,7 @@ depth_embedding:
   normalize: false
 
 dense_predictor:
-  layers: [9]
+  layers: [3, 6, 9]
   clip_feat_dim: 768
   q_dim: 512
   d_model: 64
@@ -31,6 +31,7 @@ dense_predictor:
   refine_kernel: 3
   refine_stride: 1
   refine_padding: 1
+  reverse_layer_order: true
 
 train:
   seed: 42

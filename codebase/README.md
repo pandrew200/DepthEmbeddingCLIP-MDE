@@ -10,7 +10,6 @@ Key features:
 - **Frozen CLIP backbone** (ViT-B/16) — no fine-tuning of the pretrained model
 - **Only 1.16M trainable parameters** — depth embedding tokens, FiLM layers, and decoder
 - **Continuous depth regression** — unlike prior CLIP-based methods that discretize depth into bins
-- **Scale-invariant log loss** (AdaBins-style) for training
 
 ## Results
 

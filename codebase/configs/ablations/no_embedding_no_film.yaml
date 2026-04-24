@@ -1,30 +1,26 @@
+# Ablation: No embedding / no FiLM (decoder on raw CLIP features)
+
 model:
   image_size: 352
-  layers:
-  - 3
-  - 6
-  - 9
+  layers: [3, 6, 9]
+
 clip:
-  model_name: ViT-B-16
-  pretrained: openai
-  layers:
-  - 3
-  - 6
-  - 9
-  device: cpu
-  precision: fp32
+  model_name: "ViT-B-16"
+  pretrained: "openai"
+  layers: [3, 6, 9]
+  device: "cpu"
+  precision: "fp32"
   return_patch_tokens: true
   normalize: true
+
 depth_embedding:
   num_tokens: 64
-  pooling: eos
+  pooling: "eos"
   normalize: false
   use_embedding: false
+
 dense_predictor:
-  layers:
-  - 3
-  - 6
-  - 9
+  layers: [3, 6, 9]
   clip_feat_dim: 768
   q_dim: 512
   d_model: 64
@@ -32,24 +28,27 @@ dense_predictor:
   n_blocks: 3
   mlp_hidden: 2048
   deconv_mid_ch: 32
-  out_activation: softplus
+  out_activation: "softplus"
   refine_kernel: 3
   refine_stride: 1
   refine_padding: 1
   use_film: false
+
 train:
   seed: 42
-  lr: 0.003
+  lr: 1.0e-3
   weight_decay: 0.01
-  epochs: 25
+  epochs: 10
   scheduler: cosine
   eval_every: 1
-  best_key: abs_rel
-  best_mode: min
+  best_key: "abs_rel"
+  best_mode: "min"
   grad_clip_norm: 1.0
+
 data:
-  batch_size: 8
+  batch_size: 16
   num_workers: 4
+
 loss:
   name: si_loss
   alpha: 10.0
