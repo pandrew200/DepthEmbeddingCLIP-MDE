@@ -32,3 +32,6 @@ Thumbs.db
 
 # Misc
 *.zip
+
+# Ablations
+configs/ablations/reverse_layer_order.yaml
